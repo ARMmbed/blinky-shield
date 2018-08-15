@@ -156,3 +156,19 @@ void BlinkyShield::show()
 {
     _shield->write(_px->getBuf());
 }
+
+// Input a value 0 to 255 to get a color value.
+// The colours are a transition r - g - b - back to r.
+uint32_t BlinkyShield::colorWheel(uint8_t wheel_pos)
+{
+    wheel_pos = 255 - wheel_pos;
+    if (wheel_pos < 85) {
+        return this->color(255 - wheel_pos * 3, 0, wheel_pos * 3);
+    } else if (wheel_pos < 170) {
+        wheel_pos -= 85;
+        return this->color(0, wheel_pos * 3, 255 - wheel_pos * 3);
+    } else {
+        wheel_pos -= 170;
+        return this->color(wheel_pos * 3, 255 - wheel_pos * 3, 0);
+    }
+}

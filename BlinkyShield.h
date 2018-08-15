@@ -37,6 +37,7 @@ public:
     void setPixelColor(uint8_t x, uint8_t y, uint16_t color);
     void setPixelColor(uint16_t n, uint16_t color);
     void show();
+    uint32_t colorWheel(uint8_t wheel_pos);
 
 private:
     PixelArray* _px;
