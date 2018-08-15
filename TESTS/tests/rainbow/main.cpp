@@ -7,9 +7,6 @@ BlinkyShield* blinky_shield;
 
 int main()
 {
-    uint32_t BLINKY_COLOR = CYAN;
-    uint8_t BLINKY_COLOR_INTENSITY = 10;
-
     blinky_shield = new BlinkyShield(BLINKY_PIN);
     blinky_shield->setIntensity(10);
 
