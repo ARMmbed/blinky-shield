@@ -122,3 +122,37 @@ uint32_t BlinkyShield::colorCvtRev(uint16_t color)
 
     return r << 16 | g << 8 | b;
 }
+
+uint16_t BlinkyShield::color(uint8_t r, uint8_t g, uint8_t b)
+{
+    uint32_t r_prime = (r & 0xff) << 16;
+    uint32_t g_prime = (g & 0xff) << 8;
+    uint32_t b_prime = (b & 0xff) << 0;
+
+    return colorCvt(r_prime | g_prime | b_prime);
+}
+
+uint32_t BlinkyShield::numPixels()
+{
+    return 40;
+}
+
+void BlinkyShield::setPixelColor(uint8_t x, uint8_t y, uint16_t color)
+{
+    if ((x >= this->width()) || (y >= this->height()))
+        return;
+
+    uint8_t n = y + (this->width() - x - 1) * this->height();
+
+    this->setPixelColor(n, color);
+}
+
+void BlinkyShield::setPixelColor(uint16_t n, uint16_t color)
+{
+    _px->Set(n, colorCvtRev(color));
+}
+
+void BlinkyShield::show()
+{
+    _shield->write(_px->getBuf());
+}

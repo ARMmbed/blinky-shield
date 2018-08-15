@@ -32,6 +32,11 @@ public:
     void setIntensity(uint8_t intensity);
     uint16_t colorCvt(uint32_t color);
     uint32_t colorCvtRev(uint16_t color);
+    uint16_t color(uint8_t r, uint8_t g, uint8_t b);
+    uint32_t numPixels();
+    void setPixelColor(uint8_t x, uint8_t y, uint16_t color);
+    void setPixelColor(uint16_t n, uint16_t color);
+    void show();
 
 private:
     PixelArray* _px;
