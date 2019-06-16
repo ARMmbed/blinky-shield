@@ -20,6 +20,7 @@ class BlinkyShield : public Adafruit_GFX
 {
 public:
     BlinkyShield(PinName pin=D6);
+    BlinkyShield(PinName pin=D6, int zeroHigh, int zeroLow, int oneHigh, int oneLow);
     ~BlinkyShield();
     void wipeColor(uint16_t color, uint8_t n_pixels=STRIPLEN);
     void red(uint8_t n_pixels=STRIPLEN);
